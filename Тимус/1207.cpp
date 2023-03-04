@@ -27,6 +27,10 @@ bool comparator(point i, point j) {
     return i.tg < j.tg;
 }
 
+bool checkMinimum(long long minX, long long minY, point p) {
+    return p.x < minX || minY > p.y && p.x == minX;
+}
+
 int main() {
     int N;
     long long minX = LONG_LONG_MAX, minY = LONG_LONG_MAX;
@@ -36,7 +40,7 @@ int main() {
     for (int i = 0; i < N; i++) {
         cin >> points[i].x >> points[i].y;
         points[i].index = i;
-        if (points[i].x < minX || minY > points[i].y && points[i].x == minX) {
+        if (checkMinimum(minX, minY, points[i])) {
             minX = points[i].x;
             minY = points[i].y;
             minIndex = i;
