@@ -20,11 +20,11 @@ struct point {
     long long x;
     long long y;
     int index;
-    double tangens;
+    double tg;
 };
 
 bool comparator(point i, point j) {
-    return i.tangens < j.tangens;
+    return i.tg < j.tg;
 }
 
 int main() {
@@ -34,21 +34,19 @@ int main() {
     cin >> N;
     vector<point> points(N);
     for (int i = 0; i < N; i++) {
-        point currentPoint = points[i];
-        cin >> currentPoint.x >>currentPoint.y;
-        currentPoint.index = i;
-        if (currentPoint.x < minX || minY > currentPoint.y && currentPoint.x == minX) {
-            minX = currentPoint.x;
-            minY = currentPoint.y;
+        cin >> points[i].x >> points[i].y;
+        points[i].index = i;
+        if (points[i].x < minX || minY > points[i].y && points[i].x == minX) {
+            minX = points[i].x;
+            minY = points[i].y;
             minIndex = i;
         }
     }
     for (int i = 0; i < N; i++) {
-        point currentPoint = points[i];
         if (i == minIndex) {
-            currentPoint.tangens = INT_MIN;
+            points[i].tg = INT_MIN;
         } else {
-            currentPoint.tangens = (double) (currentPoint.y - minY) / (double) (currentPoint.x - minX);
+            points[i].tg = (double) (points[i].y - minY) / (double) (points[i].x - minX);
 
         }
     }
