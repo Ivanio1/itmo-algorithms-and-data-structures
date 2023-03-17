@@ -31,7 +31,7 @@ int main() {
     }
     switch (sign) {
     case '-':
-      cout << left.front() << '\n';
+      cout << left.front() << endl;
       left.pop_front();
       break;
     case '*':
