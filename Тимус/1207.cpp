@@ -49,7 +49,10 @@ int main() {
     for (int i = 0; i < N; i++) {
         if (i == minIndex) {
             points[i].tg = INT_MIN;
-        } else {
+        }else if(points[i].x==points[minIndex].x){
+            points[i].tg = INT_MAX;
+        }
+        else {
             points[i].tg = (double) (points[i].y - minY) / (double) (points[i].x - minX);
 
         }
