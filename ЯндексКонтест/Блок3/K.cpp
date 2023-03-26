@@ -28,13 +28,15 @@ struct memorySegment {
   }
 };
 
-auto compare = [](const struct memorySegment *a,
-                  const struct memorySegment *b) {
-  return a->length > b->length;
+struct compare {
+  bool operator()(const struct memorySegment *a,
+                  const struct memorySegment *b) const {
+    return a->length > b->length;
+  }
 };
 
 // Sorted by length
-multiset<struct memorySegment *, decltype(compare)> freeSegments(compare);
+multiset<struct memorySegment *, compare> freeSegments;
 
 // Allocate memory if it is possible
 struct memorySegment *allocate(int operation, int i) {
