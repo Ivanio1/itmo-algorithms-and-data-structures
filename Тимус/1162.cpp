@@ -7,7 +7,7 @@
 
 using namespace std;
 
-/* Сложность алгоритма O(n+m)
+/* Сложность алгоритма O(n*m)
  *
  */
 
@@ -46,7 +46,7 @@ int main() {
     changes.emplace_back(exchange_point(b, a, RBA, CBA));
   }
 
-  // O(n+m) m-количество обменных пунктов
+  // O(n*m) m-количество обменных пунктов
   for (int i = 0; i < N - 1; i++) {
     for (auto &current_change : changes) {
       values[current_change.b] =
